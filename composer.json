@@ -1,0 +1,28 @@
+{
+	"name": "console-helpers/phpunit-compat",
+	"description": "Compatibility layer for PHPUnit test cases/test suite to work on different major PHPUnit versions",
+	"license": "BSD-3-Clause",
+	"authors": [
+		{
+			"name": "Alexander Obuhovich",
+			"email": "aik.bold@gmail.com"
+		}
+	],
+	"require": {
+		"php": ">=5.6.0"
+	},
+	"require-dev": {
+		"aik099/coding-standard": "dev-master"
+	},
+	"autoload": {
+		"psr-4": {
+			"ConsoleHelpers\\PHPUnitCompat\\": "src/PHPUnitCompat/",
+			"Tests\\ConsoleHelpers\\PHPUnitCompat\\": "tests/PHPUnitCompat/"
+		}
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "0.0.x-dev"
+		}
+	}
+}
