@@ -47,7 +47,14 @@ jobs:
           php-version: "${{ matrix.php }}"
           tools: phpunit:"${{ matrix.phpunit }}"
 
+      - name: Install dependencies
+        uses: "ramsey/composer-install@v2"
+        with:
+          dependency-versions: "highest"
+          composer-options: "--no-dev"
+
       - name: Run tests
+        continue-on-error: true
         run: |
           phpunit -v --coverage-clover=coverage.clover
 

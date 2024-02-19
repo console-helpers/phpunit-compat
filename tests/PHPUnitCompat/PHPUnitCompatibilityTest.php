@@ -16,9 +16,14 @@ use ConsoleHelpers\PHPUnitCompat\AbstractPHPUnitCompatibilityTestCase;
 class PHPUnitCompatibilityTest extends AbstractPHPUnitCompatibilityTestCase
 {
 
-	public function testExample()
+	public function testPassing()
 	{
 		$this->assertTrue(true);
+	}
+
+	public function testFailing()
+	{
+		$this->fail('This test is expected to fail.');
 	}
 
 }
