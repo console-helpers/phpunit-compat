@@ -94,6 +94,7 @@ trait TAbstractPHPUnitCompatibilityTestCase
 
 	/**
 	 * @after
+	 * @codeCoverageIgnore
 	 */
 	protected function verifyMockeryExpectations()
 	{
