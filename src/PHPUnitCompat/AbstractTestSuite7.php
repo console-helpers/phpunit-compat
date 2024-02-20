@@ -14,21 +14,21 @@ namespace ConsoleHelpers\PHPUnitCompat;
 use PHPUnit\Framework\TestResult;
 use PHPUnit\Framework\TestSuite;
 
-if ( version_compare($runner_version, '7.0.0', '<') ) {
+if ( version_compare(\PHPUNIT_COMPAT_RUNNER_VERSION, '7.0.0', '<') ) {
 	/**
 	 * Implementation for PHPUnit 6
 	 */
-	abstract class AbstractPHPUnitCompatibilityTestSuite extends TestSuite
+	abstract class AbstractTestSuite extends TestSuite
 	{
 
-		use TAbstractPHPUnitCompatibilityTestSuite;
+		use TAbstractTestSuiteBody;
 
 		/**
 		 * @inheritDoc
 		 */
 		public function run(TestResult $result = null)
 		{
-			return $this->runCompatibilized($result);
+			return $this->runCompat($result);
 		}
 
 		/**
@@ -36,26 +36,26 @@ if ( version_compare($runner_version, '7.0.0', '<') ) {
 		 */
 		protected function tearDown()
 		{
-			$this->tearDownCompatibilized();
+			$this->tearDownCompat();
 		}
 
 	}
 }
-elseif ( version_compare($runner_version, '8.0.0', '<') ) {
+elseif ( version_compare(\PHPUNIT_COMPAT_RUNNER_VERSION, '8.0.0', '<') ) {
 	/**
 	 * Implementation for PHPUnit 7
 	 */
-	abstract class AbstractPHPUnitCompatibilityTestSuite extends TestSuite
+	abstract class AbstractTestSuite extends TestSuite
 	{
 
-		use TAbstractPHPUnitCompatibilityTestSuite;
+		use TAbstractTestSuiteBody;
 
 		/**
 		 * @inheritDoc
 		 */
 		public function run(TestResult $result = null): TestResult
 		{
-			return $this->runCompatibilized($result);
+			return $this->runCompat($result);
 		}
 
 		/**
@@ -63,7 +63,7 @@ elseif ( version_compare($runner_version, '8.0.0', '<') ) {
 		 */
 		protected function tearDown(): void
 		{
-			$this->tearDownCompatibilized();
+			$this->tearDownCompat();
 		}
 
 	}
@@ -72,17 +72,17 @@ else {
 	/**
 	 * Implementation for PHPUnit 8+
 	 */
-	abstract class AbstractPHPUnitCompatibilityTestSuite extends TestSuite
+	abstract class AbstractTestSuite extends TestSuite
 	{
 
-		use TAbstractPHPUnitCompatibilityTestSuite;
+		use TAbstractTestSuiteBody;
 
 		/**
 		 * @inheritDoc
 		 */
 		public function run(TestResult $result = null): TestResult
 		{
-			return $this->runCompatibilized($result);
+			return $this->runCompat($result);
 		}
 
 		/**
@@ -92,7 +92,7 @@ else {
 		 */
 		protected function tearDown(): void
 		{
-			$this->tearDownCompatibilized();
+			$this->tearDownCompat();
 		}
 
 	}

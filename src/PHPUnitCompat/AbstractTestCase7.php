@@ -13,42 +13,42 @@ namespace ConsoleHelpers\PHPUnitCompat;
 
 use PHPUnit\Framework\TestCase;
 
-if ( version_compare($runner_version, '7.0.0', '<') ) {
+if ( version_compare(\PHPUNIT_COMPAT_RUNNER_VERSION, '7.0.0', '<') ) { // @codeCoverageIgnore
 	/**
 	 * Implementation for PHPUnit 6
 	 */
-	abstract class AbstractPHPUnitCompatibilityTestCase extends TestCase
+	abstract class AbstractTestCase extends TestCase
 	{
 
-		use TAbstractPHPUnitCompatibilityTestCase;
+		use TAbstractTestCaseBody;
 
 		/**
 		 * @inheritDoc
 		 */
 		protected function onNotSuccessfulTest(\Throwable $t)
 		{
-			$this->onNotSuccessfulTestCompatibilized($t);
+			$this->onNotSuccessfulTestCompat($t);
 
 			parent::onNotSuccessfulTest($t);
 		}
 
 	}
 }
-elseif ( version_compare($runner_version, '8.0.0', '<') ) {
+elseif ( version_compare(\PHPUNIT_COMPAT_RUNNER_VERSION, '8.0.0', '<') ) {
 	/**
 	 * Implementation for PHPUnit 7
 	 */
-	abstract class AbstractPHPUnitCompatibilityTestCase extends TestCase
+	abstract class AbstractTestCase extends TestCase
 	{
 
-		use TAbstractPHPUnitCompatibilityTestCase;
+		use TAbstractTestCaseBody;
 
 		/**
 		 * @inheritDoc
 		 */
 		protected function onNotSuccessfulTest(\Throwable $t)/* The :void return type declaration that should be here would cause a BC issue */
 		{
-			$this->onNotSuccessfulTestCompatibilized($t);
+			$this->onNotSuccessfulTestCompat($t);
 
 			parent::onNotSuccessfulTest($t);
 		}
@@ -59,17 +59,17 @@ else {
 	/**
 	 * Implementation for PHPUnit 8+
 	 */
-	abstract class AbstractPHPUnitCompatibilityTestCase extends TestCase
+	abstract class AbstractTestCase extends TestCase
 	{
 
-		use TAbstractPHPUnitCompatibilityTestCase;
+		use TAbstractTestCaseBody;
 
 		/**
 		 * @inheritDoc
 		 */
 		protected function onNotSuccessfulTest(\Throwable $t): void
 		{
-			$this->onNotSuccessfulTestCompatibilized($t);
+			$this->onNotSuccessfulTestCompat($t);
 
 			parent::onNotSuccessfulTest($t);
 		}

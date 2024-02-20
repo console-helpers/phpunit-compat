@@ -11,9 +11,19 @@
 namespace Tests\ConsoleHelpers\PHPUnitCompat;
 
 
-use ConsoleHelpers\PHPUnitCompat\AbstractPHPUnitCompatibilityTestSuite;
+use PHPUnit\Framework\TestCase;
 
-class PHPUnitCompatibilityTestSuite extends AbstractPHPUnitCompatibilityTestSuite
+final class SampleTest extends TestCase
 {
+
+	/**
+	 * @covers \ConsoleHelpers\PHPUnitCompat\TAbstractTestSuiteBody
+	 *
+	 * @return void
+	 */
+	public function testSuccess()
+	{
+		$this->assertTrue(true);
+	}
 
 }
