@@ -13,6 +13,7 @@ namespace ConsoleHelpers\PHPUnitCompat;
 
 use PHPUnit\Runner\Version;
 
+// PHPUnit Compat.
 if ( \class_exists('\PHPUnit_Framework_IncompleteTestError') ) {
 	\class_alias(
 		'\PHPUnit_Framework_IncompleteTestError',
@@ -60,33 +61,6 @@ else {
 	\class_alias('\PHPUnit\Framework\Test', '\ConsoleHelpers\PHPUnitCompat\Framework\Test');
 }
 
-if ( class_exists('\PHP_CodeCoverage') ) {
-	\class_alias('\PHP_CodeCoverage', '\aik099\SebastianBergmann\CodeCoverage\CodeCoverage');
-}
-else {
-	\class_alias(
-		'\SebastianBergmann\CodeCoverage\CodeCoverage',
-		'\aik099\SebastianBergmann\CodeCoverage\CodeCoverage'
-	);
-}
-
-if ( \interface_exists('\PHP_CodeCoverage_Driver') ) {
-	\class_alias('\PHP_CodeCoverage_Driver', '\aik099\SebastianBergmann\CodeCoverage\Driver\Driver');
-}
-else {
-	\class_alias(
-		'\SebastianBergmann\CodeCoverage\Driver\Driver',
-		'\aik099\SebastianBergmann\CodeCoverage\Driver\Driver'
-	);
-}
-
-if ( class_exists('\PHP_CodeCoverage_Filter') ) {
-	\class_alias('\PHP_CodeCoverage_Filter', '\aik099\SebastianBergmann\CodeCoverage\Filter');
-}
-else {
-	\class_alias('\SebastianBergmann\CodeCoverage\Filter', '\aik099\SebastianBergmann\CodeCoverage\Filter');
-}
-
 if ( !\defined('PHPUNIT_COMPAT_RUNNER_VERSION') ) {
 	if ( \class_exists('PHPUnit\Runner\Version') ) {
 		\define('PHPUNIT_COMPAT_RUNNER_VERSION', Version::id());
@@ -94,6 +68,34 @@ if ( !\defined('PHPUNIT_COMPAT_RUNNER_VERSION') ) {
 	else {
 		\define('PHPUNIT_COMPAT_RUNNER_VERSION', \PHPUnit_Runner_Version::id());
 	}
+}
+
+// CodeCoverage Compat.
+if ( class_exists('\PHP_CodeCoverage') ) {
+	\class_alias('\PHP_CodeCoverage', '\ConsoleHelpers\CodeCoverageCompat\CodeCoverage');
+}
+else {
+	\class_alias(
+		'\SebastianBergmann\CodeCoverage\CodeCoverage',
+		'\ConsoleHelpers\CodeCoverageCompat\CodeCoverage'
+	);
+}
+
+if ( \interface_exists('\PHP_CodeCoverage_Driver') ) {
+	\class_alias('\PHP_CodeCoverage_Driver', '\ConsoleHelpers\CodeCoverageCompat\Driver\Driver');
+}
+else {
+	\class_alias(
+		'\SebastianBergmann\CodeCoverage\Driver\Driver',
+		'\ConsoleHelpers\CodeCoverageCompat\Driver\Driver'
+	);
+}
+
+if ( class_exists('\PHP_CodeCoverage_Filter') ) {
+	\class_alias('\PHP_CodeCoverage_Filter', '\ConsoleHelpers\CodeCoverageCompat\Filter');
+}
+else {
+	\class_alias('\SebastianBergmann\CodeCoverage\Filter', '\ConsoleHelpers\CodeCoverageCompat\Filter');
 }
 
 
