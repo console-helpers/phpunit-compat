@@ -9,11 +9,19 @@
 [![Total Downloads](https://poser.pugx.org/console-helpers/phpunit-compat/downloads)](https://packagist.org/packages/console-helpers/phpunit-compat)
 [![License](https://poser.pugx.org/console-helpers/phpunit-compat/license)](https://packagist.org/packages/console-helpers/phpunit-compat)
 
-PHPUnit-Compat is a compatibility layer for PHPUnit test cases/test suite to work on different major PHPUnit versions.
+PHPUnit-Compat is a compatibility layer for PHPUnit, that allows creating a test case/test suite classes, that will work across different PHPUnit versions.
+
+Handled methods:
+
+* `\PHPUnit\Framework\TestCase:onNotSuccessfulTest` via `\ConsoleHelpers\PHPUnitCompat\AbstractTestCase::onNotSuccessfulTestCompat`;
+* `PHPUnit\Framework\TestSuite::run` via `\ConsoleHelpers\PHPUnitCompat\AbstractTestSuite::runCompat`;
+* `\PHPUnit\Framework\TestSuite::tearDown` via `\ConsoleHelpers\PHPUnitCompat\AbstractTestSuite::tearDownCompat` (till PHPUnit 8.1.6; in PHPUnit 8.2.0 method was removed).
+
+For assertion method compatibility please use https://github.com/Yoast/PHPUnit-Polyfills.
 
 ## Installation
 
-* execute this command to add as a dependency: `php composer.phar require console-helpers/phpunit-compat`
+* Execute this command to add as a dependency: `php composer.phar require console-helpers/phpunit-compat`.
 
 ## Contributing
 
