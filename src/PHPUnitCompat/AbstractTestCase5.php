@@ -13,45 +13,47 @@ namespace ConsoleHelpers\PHPUnitCompat;
 
 use PHPUnit\Framework\TestCase;
 
-if ( version_compare($runner_version, '5.0.0', '<') ) {
+// @codeCoverageIgnoreStart
+if ( version_compare(\PHPUNIT_COMPAT_RUNNER_VERSION, '5.0.0', '<') ) {
 	/**
 	 * Implementation for PHPUnit 4
 	 */
-	abstract class AbstractPHPUnitCompatibilityTestCase extends TestCase
+	abstract class AbstractTestCase extends TestCase
 	{
 
-		use TAbstractPHPUnitCompatibilityTestCase;
+		use TAbstractTestCaseBody;
 
 		/**
 		 * @inheritDoc
 		 */
 		protected function onNotSuccessfulTest(\Exception $e)
 		{
-			$this->onNotSuccessfulTestCompatibilized($e);
+			$this->onNotSuccessfulTestCompat($e);
 
 			parent::onNotSuccessfulTest($e);
 		}
 
 	}
 }
-elseif ( version_compare($runner_version, '6.0.0', '<') ) {
+elseif ( version_compare(\PHPUNIT_COMPAT_RUNNER_VERSION, '6.0.0', '<') ) {
 	/**
 	 * Implementation for PHPUnit 5
 	 */
-	abstract class AbstractPHPUnitCompatibilityTestCase extends TestCase
+	abstract class AbstractTestCase extends TestCase
 	{
 
-		use TAbstractPHPUnitCompatibilityTestCase;
+		use TAbstractTestCaseBody;
 
 		/**
 		 * @inheritDoc
 		 */
 		protected function onNotSuccessfulTest($e)
 		{
-			$this->onNotSuccessfulTestCompatibilized($e);
+			$this->onNotSuccessfulTestCompat($e);
 
 			parent::onNotSuccessfulTest($e);
 		}
 
 	}
 }
+// @codeCoverageIgnoreEnd

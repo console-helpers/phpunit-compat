@@ -14,15 +14,17 @@ namespace ConsoleHelpers\PHPUnitCompat;
 use PHPUnit\Framework\TestResult;
 use PHPUnit\Runner\Version;
 
-if ( \class_exists('PHPUnit\Runner\Version') ) {
-	$runner_version = Version::id();
-}
-else {
-	$runner_version = \PHPUnit_Runner_Version::id();
+if ( !\defined('PHPUNIT_COMPAT_RUNNER_VERSION') ) {
+	if ( \class_exists('PHPUnit\Runner\Version') ) {
+		\define('PHPUNIT_COMPAT_RUNNER_VERSION', Version::id());
+	}
+	else {
+		\define('PHPUNIT_COMPAT_RUNNER_VERSION', \PHPUnit_Runner_Version::id());
+	}
 }
 
 
-trait TAbstractPHPUnitCompatibilityTestSuite
+trait TAbstractTestSuiteBody
 {
 
 	/**
@@ -32,7 +34,7 @@ trait TAbstractPHPUnitCompatibilityTestSuite
 	 *
 	 * @return TestResult
 	 */
-	public function runCompatibilized($result = null)
+	public function runCompat($result = null)
 	{
 		return parent::run($result);
 	}
@@ -41,7 +43,7 @@ trait TAbstractPHPUnitCompatibilityTestSuite
 	 * Template Method that is called after the tests
 	 * of this test suite have finished running.
 	 */
-	protected function tearDownCompatibilized()
+	protected function tearDownCompat()
 	{
 
 	}
@@ -49,9 +51,9 @@ trait TAbstractPHPUnitCompatibilityTestSuite
 }
 
 
-if ( version_compare($runner_version, '6.0.0', '<') ) {
-	require_once __DIR__ . '/AbstractPHPUnitCompatibilityTestSuite5.php';
+if ( version_compare(\PHPUNIT_COMPAT_RUNNER_VERSION, '6.0.0', '<') ) {
+	require_once __DIR__ . '/AbstractTestSuite5.php';
 }
 else {
-	require_once __DIR__ . '/AbstractPHPUnitCompatibilityTestSuite7.php';
+	require_once __DIR__ . '/AbstractTestSuite7.php';
 }

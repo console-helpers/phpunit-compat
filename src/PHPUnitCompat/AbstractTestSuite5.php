@@ -13,48 +13,21 @@ namespace ConsoleHelpers\PHPUnitCompat;
 
 use PHPUnit\Framework\TestSuite;
 
-if ( version_compare($runner_version, '5.0.0', '<') ) {
+if ( version_compare(\PHPUNIT_COMPAT_RUNNER_VERSION, '5.0.0', '<') ) {
 	/**
 	 * Implementation for PHPUnit 4
 	 */
-	abstract class AbstractPHPUnitCompatibilityTestSuite extends TestSuite
+	abstract class AbstractTestSuite extends TestSuite
 	{
 
-		use TAbstractPHPUnitCompatibilityTestSuite;
-
-		/**
-	     * @inheritDoc
-	     */
-	    public function run(\PHPUnit_Framework_TestResult $result = null)
-	    {
-			return $this->runCompatibilized($result);
-		}
-
-		/**
-		 * @inheritDoc
-		 */
-		protected function tearDown()
-		{
-			$this->tearDownCompatibilized();
-		}
-
-	}
-}
-elseif ( version_compare($runner_version, '6.0.0', '<') ) {
-	/**
-	 * Implementation for PHPUnit 5
-	 */
-	abstract class AbstractPHPUnitCompatibilityTestSuite extends TestSuite
-	{
-
-		use TAbstractPHPUnitCompatibilityTestSuite;
+		use TAbstractTestSuiteBody;
 
 		/**
 		 * @inheritDoc
 		 */
 		public function run(\PHPUnit_Framework_TestResult $result = null)
 		{
-			return $this->runCompatibilized($result);
+			return $this->runCompat($result);
 		}
 
 		/**
@@ -62,7 +35,34 @@ elseif ( version_compare($runner_version, '6.0.0', '<') ) {
 		 */
 		protected function tearDown()
 		{
-			$this->tearDownCompatibilized();
+			$this->tearDownCompat();
+		}
+
+	}
+}
+elseif ( version_compare(\PHPUNIT_COMPAT_RUNNER_VERSION, '6.0.0', '<') ) {
+	/**
+	 * Implementation for PHPUnit 5
+	 */
+	abstract class AbstractTestSuite extends TestSuite
+	{
+
+		use TAbstractTestSuiteBody;
+
+		/**
+		 * @inheritDoc
+		 */
+		public function run(\PHPUnit_Framework_TestResult $result = null)
+		{
+			return $this->runCompat($result);
+		}
+
+		/**
+		 * @inheritDoc
+		 */
+		protected function tearDown()
+		{
+			$this->tearDownCompat();
 		}
 
 	}

@@ -11,19 +11,18 @@
 namespace Tests\ConsoleHelpers\PHPUnitCompat;
 
 
-use ConsoleHelpers\PHPUnitCompat\AbstractPHPUnitCompatibilityTestCase;
+use PHPUnit\Framework\TestCase;
 
-class PHPUnitCompatibilityTest extends AbstractPHPUnitCompatibilityTestCase
+final class TestSuiteOverridingTraitMethodTest extends TestCase
 {
 
-	public function testPassing()
+	public static function suite()
 	{
-		$this->assertTrue(true);
-	}
+		$test_case_reflection = new \ReflectionClass(SampleTest::class);
 
-	public function testFailing()
-	{
-		$this->fail('This test is expected to fail.');
+		$test_suite = new TestSuiteFixture($test_case_reflection);
+
+		return $test_suite;
 	}
 
 }
