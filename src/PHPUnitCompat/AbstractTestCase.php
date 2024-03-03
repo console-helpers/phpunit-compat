@@ -54,12 +54,12 @@ else {
 	\class_alias('\PHPUnit\Framework\TestResult', '\ConsoleHelpers\PHPUnitCompat\Framework\TestResult');
 }
 
-/*if ( class_exists('\PHPUnit_Framework_Test') ) {
+if ( class_exists('\PHPUnit_Framework_Test') ) {
 	\class_alias('\PHPUnit_Framework_Test', '\ConsoleHelpers\PHPUnitCompat\Framework\Test');
 }
 else {
 	\class_alias('\PHPUnit\Framework\Test', '\ConsoleHelpers\PHPUnitCompat\Framework\Test');
-}*/
+}
 
 if ( !\defined('PHPUNIT_COMPAT_RUNNER_VERSION') ) {
 	if ( \class_exists('PHPUnit\Runner\Version') ) {

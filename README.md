@@ -21,6 +21,7 @@ PHPUnit-Compat is a compatibility layer for PHPUnit, that allows creating a test
 
 * `\PHPUnit\Framework\DataProviderTestSuite` via `\ConsoleHelpers\PHPUnitCompat\Framework\DataProviderTestSuite`;
 * `\PHPUnit\Framework\TestResult` via `\ConsoleHelpers\PHPUnitCompat\Framework\TestResult`;
+* `\PHPUnit\Framework\Test` via `\ConsoleHelpers\PHPUnitCompat\Framework\Test`;
 * `\SebastianBergmann\CodeCoverage\CodeCoverage` via `\ConsoleHelpers\CodeCoverageCompat\CodeCoverage`;
 * `\SebastianBergmann\CodeCoverage\Driver\Driver'` via `\ConsoleHelpers\CodeCoverageCompat\Driver\Driver`;
 * `\SebastianBergmann\CodeCoverage\Filter` via `\ConsoleHelpers\CodeCoverageCompat\Filter`.
