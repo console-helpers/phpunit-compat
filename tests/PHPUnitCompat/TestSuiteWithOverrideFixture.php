@@ -11,18 +11,29 @@
 namespace Tests\ConsoleHelpers\PHPUnitCompat;
 
 
-use PHPUnit\Framework\TestCase;
+use ConsoleHelpers\PHPUnitCompat\AbstractTestSuite;
 
-final class TestSuiteOverridingTraitMethodTest extends TestCase
+class TestSuiteWithOverrideFixture extends AbstractTestSuite
 {
 
-	public static function suite()
+	/**
+	 * @inheritDoc
+	 */
+	public function runCompat($result = null)
 	{
-		$test_case_reflection = new \ReflectionClass(SampleTest::class);
+		$result = parent::runCompat($result);
 
-		$test_suite = new TestSuiteWithOverrideFixture($test_case_reflection);
+		echo '[runCompat called]';
 
-		return $test_suite;
+		return $result;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function tearDownCompat()
+	{
+		echo '[tearDownCompat called]';
 	}
 
 }
