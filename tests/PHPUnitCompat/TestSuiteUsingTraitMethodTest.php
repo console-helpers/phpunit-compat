@@ -8,19 +8,21 @@
  * @link      https://github.com/console-helpers/phpunit-compat
  */
 
-namespace Tests\ConsoleHelpers\PHPUnitCompat;
+namespace PHPUnitCompat;
 
 
 use PHPUnit\Framework\TestCase;
+use Tests\ConsoleHelpers\PHPUnitCompat\SampleTest;
+use Tests\ConsoleHelpers\PHPUnitCompat\TestSuiteWithoutOverrideFixture;
 
-final class TestSuiteOverridingTraitMethodTest extends TestCase
+final class TestSuiteUsingTraitMethodTest extends TestCase
 {
 
 	public static function suite()
 	{
 		$test_case_reflection = new \ReflectionClass(SampleTest::class);
 
-		$test_suite = new TestSuiteWithOverrideFixture($test_case_reflection);
+		$test_suite = new TestSuiteWithoutOverrideFixture($test_case_reflection);
 
 		return $test_suite;
 	}

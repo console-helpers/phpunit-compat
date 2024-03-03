@@ -13,27 +13,7 @@ namespace Tests\ConsoleHelpers\PHPUnitCompat;
 
 use ConsoleHelpers\PHPUnitCompat\AbstractTestSuite;
 
-class TestSuiteFixture extends AbstractTestSuite
+class TestSuiteWithoutOverrideFixture extends AbstractTestSuite
 {
-
-	/**
-	 * @inheritDoc
-	 */
-	public function runCompat($result = null)
-	{
-		$result = parent::runCompat($result);
-
-		echo '[runCompat called]';
-
-		return $result;
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	protected function tearDownCompat()
-	{
-		echo '[tearDownCompat called]';
-	}
 
 }

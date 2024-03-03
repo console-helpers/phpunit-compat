@@ -14,7 +14,7 @@ namespace ConsoleHelpers\PHPUnitCompat;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Implementation for PHPUnit 5
+ * Implementation for PHPUnit 6
  */
 abstract class AbstractTestCase extends TestCase
 {
@@ -24,11 +24,11 @@ abstract class AbstractTestCase extends TestCase
 	/**
 	 * @inheritDoc
 	 */
-	protected function onNotSuccessfulTest($e)
+	protected function onNotSuccessfulTest(\Throwable $t)
 	{
-		$this->onNotSuccessfulTestCompat($e);
+		$this->onNotSuccessfulTestCompat($t);
 
-		parent::onNotSuccessfulTest($e);
+		parent::onNotSuccessfulTest($t);
 	}
 
 }

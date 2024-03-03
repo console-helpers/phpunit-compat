@@ -15,7 +15,7 @@ use PHPUnit\Framework\TestResult;
 use PHPUnit\Framework\TestSuite;
 
 /**
- * Implementation for PHPUnit 7
+ * Implementation for PHPUnit 8+
  */
 abstract class AbstractTestSuite extends TestSuite
 {
@@ -31,6 +31,8 @@ abstract class AbstractTestSuite extends TestSuite
 	}
 
 	/**
+	 * For PHPUnit < 8.2.0.
+	 *
 	 * @inheritDoc
 	 */
 	protected function tearDown(): void
@@ -39,4 +41,3 @@ abstract class AbstractTestSuite extends TestSuite
 	}
 
 }
-

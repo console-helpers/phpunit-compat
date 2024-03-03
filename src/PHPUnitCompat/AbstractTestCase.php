@@ -138,9 +138,18 @@ trait TAbstractTestCaseBody
 
 }
 
-if ( version_compare(\PHPUNIT_COMPAT_RUNNER_VERSION, '6.0.0', '<') ) {
+if ( version_compare(\PHPUNIT_COMPAT_RUNNER_VERSION, '5.0.0', '<') ) {
+	require_once __DIR__ . '/AbstractTestCase4.php';
+}
+elseif ( version_compare(\PHPUNIT_COMPAT_RUNNER_VERSION, '6.0.0', '<') ) {
 	require_once __DIR__ . '/AbstractTestCase5.php';
 }
-else {
+elseif ( version_compare(\PHPUNIT_COMPAT_RUNNER_VERSION, '7.0.0', '<') ) {
+	require_once __DIR__ . '/AbstractTestCase6.php';
+}
+elseif ( version_compare(\PHPUNIT_COMPAT_RUNNER_VERSION, '8.0.0', '<') ) {
 	require_once __DIR__ . '/AbstractTestCase7.php';
+}
+else {
+	require_once __DIR__ . '/AbstractTestCase8.php';
 }
