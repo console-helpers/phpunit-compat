@@ -71,7 +71,7 @@ if ( !\defined('PHPUNIT_COMPAT_RUNNER_VERSION') ) {
 }
 
 // CodeCoverage Compat.
-/*if ( class_exists('\PHP_CodeCoverage') ) {
+if ( class_exists('\PHP_CodeCoverage') ) {
 	\class_alias('\PHP_CodeCoverage', '\ConsoleHelpers\CodeCoverageCompat\CodeCoverage');
 }
 else {
@@ -96,7 +96,7 @@ if ( class_exists('\PHP_CodeCoverage_Filter') ) {
 }
 else {
 	\class_alias('\SebastianBergmann\CodeCoverage\Filter', '\ConsoleHelpers\CodeCoverageCompat\Filter');
-}*/
+}
 
 
 trait TAbstractTestCaseBody
