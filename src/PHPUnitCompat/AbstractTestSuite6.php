@@ -11,24 +11,31 @@
 namespace ConsoleHelpers\PHPUnitCompat;
 
 
-use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestResult;
+use PHPUnit\Framework\TestSuite;
 
 /**
- * Implementation for PHPUnit 5
+ * Implementation for PHPUnit 6
  */
-abstract class AbstractTestCase extends TestCase
+abstract class AbstractTestSuite extends TestSuite
 {
 
-	use TAbstractTestCaseBody;
+	use TAbstractTestSuiteBody;
 
 	/**
 	 * @inheritDoc
 	 */
-	protected function onNotSuccessfulTest($e)
+	public function run(TestResult $result = null)
 	{
-		$this->onNotSuccessfulTestCompat($e);
+		return $this->runCompat($result);
+	}
 
-		parent::onNotSuccessfulTest($e);
+	/**
+	 * @inheritDoc
+	 */
+	protected function tearDown()
+	{
+		$this->tearDownCompat();
 	}
 
 }

@@ -50,10 +50,18 @@ trait TAbstractTestSuiteBody
 
 }
 
-
-if ( version_compare(\PHPUNIT_COMPAT_RUNNER_VERSION, '6.0.0', '<') ) {
+if ( version_compare(\PHPUNIT_COMPAT_RUNNER_VERSION, '5.0.0', '<') ) {
+	require_once __DIR__ . '/AbstractTestSuite4.php';
+}
+elseif ( version_compare(\PHPUNIT_COMPAT_RUNNER_VERSION, '6.0.0', '<') ) {
 	require_once __DIR__ . '/AbstractTestSuite5.php';
 }
-else {
+elseif ( version_compare(\PHPUNIT_COMPAT_RUNNER_VERSION, '7.0.0', '<') ) {
+	require_once __DIR__ . '/AbstractTestSuite6.php';
+}
+elseif ( version_compare(\PHPUNIT_COMPAT_RUNNER_VERSION, '8.0.0', '<') ) {
 	require_once __DIR__ . '/AbstractTestSuite7.php';
+}
+else {
+	require_once __DIR__ . '/AbstractTestSuite8.php';
 }

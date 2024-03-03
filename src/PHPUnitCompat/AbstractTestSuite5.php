@@ -13,57 +13,28 @@ namespace ConsoleHelpers\PHPUnitCompat;
 
 use PHPUnit\Framework\TestSuite;
 
-if ( version_compare(\PHPUNIT_COMPAT_RUNNER_VERSION, '5.0.0', '<') ) {
+/**
+ * Implementation for PHPUnit 5
+ */
+abstract class AbstractTestSuite extends TestSuite
+{
+
+	use TAbstractTestSuiteBody;
+
 	/**
-	 * Implementation for PHPUnit 4
+	 * @inheritDoc
 	 */
-	abstract class AbstractTestSuite extends TestSuite
+	public function run(\PHPUnit_Framework_TestResult $result = null)
 	{
-
-		use TAbstractTestSuiteBody;
-
-		/**
-		 * @inheritDoc
-		 */
-		public function run(\PHPUnit_Framework_TestResult $result = null)
-		{
-			return $this->runCompat($result);
-		}
-
-		/**
-		 * @inheritDoc
-		 */
-		protected function tearDown()
-		{
-			$this->tearDownCompat();
-		}
-
+		return $this->runCompat($result);
 	}
-}
-elseif ( version_compare(\PHPUNIT_COMPAT_RUNNER_VERSION, '6.0.0', '<') ) {
+
 	/**
-	 * Implementation for PHPUnit 5
+	 * @inheritDoc
 	 */
-	abstract class AbstractTestSuite extends TestSuite
+	protected function tearDown()
 	{
-
-		use TAbstractTestSuiteBody;
-
-		/**
-		 * @inheritDoc
-		 */
-		public function run(\PHPUnit_Framework_TestResult $result = null)
-		{
-			return $this->runCompat($result);
-		}
-
-		/**
-		 * @inheritDoc
-		 */
-		protected function tearDown()
-		{
-			$this->tearDownCompat();
-		}
-
+		$this->tearDownCompat();
 	}
+
 }
