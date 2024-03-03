@@ -11,11 +11,16 @@
 
 PHPUnit-Compat is a compatibility layer for PHPUnit, that allows creating a test case/test suite classes, that will work across different PHPUnit versions.
 
-Handled methods:
+### Covered methods:
 
 * `\PHPUnit\Framework\TestCase:onNotSuccessfulTest` via `\ConsoleHelpers\PHPUnitCompat\AbstractTestCase::onNotSuccessfulTestCompat`;
 * `PHPUnit\Framework\TestSuite::run` via `\ConsoleHelpers\PHPUnitCompat\AbstractTestSuite::runCompat`;
 * `\PHPUnit\Framework\TestSuite::tearDown` via `\ConsoleHelpers\PHPUnitCompat\AbstractTestSuite::tearDownCompat` (till PHPUnit 8.1.6; in PHPUnit 8.2.0 method was removed).
+
+### Covered classes:
+
+* `\PHPUnit\Framework\DataProviderTestSuite` via `\ConsoleHelpers\PHPUnitCompat\Framework\DataProviderTestSuite`;
+* `\PHPUnit\Framework\TestResult` via `\ConsoleHelpers\PHPUnitCompat\Framework\TestResult`.
 
 For assertion method compatibility please use https://github.com/Yoast/PHPUnit-Polyfills.
 
