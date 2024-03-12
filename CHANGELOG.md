@@ -14,7 +14,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.0.2] - 2024-03-12
 ### Changed
-- Removed Mockery integration, that was added by mistake.
+- Removed Mockery integration, which was added by mistake.
 
 ## [1.0.1] - 2024-03-03
 ### Added
