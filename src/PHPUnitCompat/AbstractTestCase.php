@@ -114,28 +114,6 @@ trait TAbstractTestCaseBody
 
 	}
 
-	/**
-	 * @after
-	 * @codeCoverageIgnore
-	 * @internal
-	 */
-	protected function verifyMockeryExpectations()
-	{
-		if ( !\class_exists('Mockery') ) {
-			return;
-		}
-
-		// Add Mockery expectations to assertion count.
-		$container = \Mockery::getContainer();
-
-		if ( $container !== null ) {
-			$this->addToAssertionCount($container->mockery_getExpectationCount());
-		}
-
-		// Verify Mockery expectations.
-		\Mockery::close();
-	}
-
 }
 
 if ( version_compare(\PHPUNIT_COMPAT_RUNNER_VERSION, '5.0.0', '<') ) {
