@@ -7,10 +7,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ...
 
 ### Changed
-- Switched from PSR-4 to fully custom-built autoloader to support static code analysis tools.
+...
 
 ### Fixed
 ...
+
+## [1.0.3] - 2024-07-11
+### Changed
+- Switched from PSR-4 to fully custom-built autoloader to support static code analysis tools.
 
 ## [1.0.2] - 2024-03-12
 ### Changed
