@@ -15,8 +15,10 @@
 		"aik099/coding-standard": "dev-master"
 	},
 	"autoload": {
+		"files": [
+			"phpunitcompat_autoloader.php"
+		],
 		"psr-4": {
-			"ConsoleHelpers\\PHPUnitCompat\\": "src/PHPUnitCompat/",
 			"Tests\\ConsoleHelpers\\PHPUnitCompat\\": "tests/PHPUnitCompat/"
 		}
 	},
