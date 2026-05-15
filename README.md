@@ -23,7 +23,7 @@ PHPUnit-Compat is a compatibility layer for PHPUnit, that allows creating a test
 * `\PHPUnit\Framework\TestResult` via `\ConsoleHelpers\PHPUnitCompat\Framework\TestResult`;
 * `\PHPUnit\Framework\Test` via `\ConsoleHelpers\PHPUnitCompat\Framework\Test`;
 * `\SebastianBergmann\CodeCoverage\CodeCoverage` via `\ConsoleHelpers\CodeCoverageCompat\CodeCoverage`;
-* `\SebastianBergmann\CodeCoverage\Driver\Driver'` via `\ConsoleHelpers\CodeCoverageCompat\Driver\Driver`;
+* `\SebastianBergmann\CodeCoverage\Driver\Driver` via `\ConsoleHelpers\CodeCoverageCompat\Driver\Driver`;
 * `\SebastianBergmann\CodeCoverage\Filter` via `\ConsoleHelpers\CodeCoverageCompat\Filter`.
 
 For assertion method compatibility please use https://github.com/Yoast/PHPUnit-Polyfills.
